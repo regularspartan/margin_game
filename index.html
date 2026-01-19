@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YFLC Bureaucracy Sim: Retro-Gov Noir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        background-color: #0a0a0a;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #0a0a0a;
+        font-family: 'JetBrains Mono', monospace;
+        color: #e3d5b8;
+      }
+      .typewriter {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .stamp-text {
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+      }
+      .manila-shadow {
+        box-shadow: 20px 20px 40px rgba(0,0,0,0.8), 5px 5px 0px rgba(0,0,0,0.2);
+      }
+      
+      .desk-texture {
+        background-color: #1a0f0a;
+        background-image: 
+          linear-gradient(rgba(0,0,0,0.3) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0,0,0,0.3) 1px, transparent 1px),
+          url("https://www.transparenttextures.com/patterns/dark-wood.png");
+        background-size: 100px 100px, 100px 100px, auto;
+      }
+
+      .pixel-overlay {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+        background-size: 100% 3px, 3px 100%;
+        pointer-events: none;
+        z-index: 999;
+        opacity: 0.5;
+      }
+
+      .crt-flicker-anim {
+        animation: flicker 0.1s infinite;
+      }
+
+      @keyframes flicker {
+        0% { opacity: 0.01; }
+        50% { opacity: 0.02; }
+        100% { opacity: 0.01; }
+      }
+
+      .scanline {
+        width: 100%;
+        height: 100px;
+        z-index: 1000;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0) 100%);
+        position: absolute;
+        bottom: 100%;
+        animation: scanline 10s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes scanline {
+        0% { bottom: 110%; }
+        100% { bottom: -20%; }
+      }
+
+      .pixel-text {
+        image-rendering: pixelated;
+        text-shadow: 1px 1px 0px rgba(0,0,0,0.4);
+      }
+
+      .grain-overlay {
+        position: fixed;
+        inset: 0;
+        background-image: url("https://www.transparenttextures.com/patterns/p6-grain.png");
+        opacity: 0.04;
+        pointer-events: none;
+        z-index: 1001;
+      }
+
+      .desk-lamp {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 40%, rgba(227, 213, 184, 0.15) 0%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.9) 100%);
+        pointer-events: none;
+        z-index: 5;
+      }
+
+      /* Pixel Stamp Styling */
+      .pixel-btn-red {
+        background-color: #7f1d1d;
+        box-shadow: 
+          0 8px 0 0 #450a0a,
+          0 12px 0 0 #000,
+          inset -4px -4px 0 0 #450a0a,
+          inset 4px 4px 0 0 #991b1b;
+      }
+      .pixel-btn-red:active {
+        box-shadow: 
+          0 4px 0 0 #450a0a,
+          0 8px 0 0 #000,
+          inset -4px -4px 0 0 #450a0a,
+          inset 4px 4px 0 0 #991b1b;
+      }
+
+      .pixel-btn-green {
+        background-color: #064e3b;
+        box-shadow: 
+          0 8px 0 0 #062c21,
+          0 12px 0 0 #000,
+          inset -4px -4px 0 0 #062c21,
+          inset 4px 4px 0 0 #065f46;
+      }
+      .pixel-btn-green:active {
+        box-shadow: 
+          0 4px 0 0 #062c21,
+          0 8px 0 0 #000,
+          inset -4px -4px 0 0 #062c21,
+          inset 4px 4px 0 0 #065f46;
+      }
+
+      .rubber-stamp {
+        transition: transform 0.05s ease-out, box-shadow 0.05s ease-out;
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "framer-motion": "https://esm.sh/framer-motion@11.11.17?external=react,react-dom",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
