@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      base: '/margain_game/', // This matches your repo name exactly
+      base: '/margin_game/', // This matches your repo name exactly
       server: {
         port: 3000,
         host: '0.0.0.0',
